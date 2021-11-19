@@ -1,6 +1,8 @@
 # This script is launched via a configurable shell
 # in port_runner.ex, so no shebang is necessary.
 
+ps $$
+
 # Start the program in the background
 exec "$@" &
 pid1=$!
