@@ -43,7 +43,7 @@ defmodule MixTestInteractive.PortRunner do
         zombie_killer_path = Path.join(:code.priv_dir(@application), "zombie_killer")
 
         runner.("/usr/bin/env", 
-          [shell, "-c", [zombie_killer_path, "mix", command] |> Enum.join(" ")],
+          [shell, "-c", [zombie_killer_path, "mix", command |> Enum.join(" ")] |> Enum.join(" ")],
           env: [{"MIX_ENV", "test"}],
           into: IO.stream(:stdio, :line)
         )
