@@ -38,7 +38,7 @@ defmodule MixTestInteractive.PortRunner do
         )
 
       _ ->
-        command = enable_ansi(command)
+        # command = enable_ansi(command)
         shell = System.get_env("ZOMBIE_PROCESS_KILLER_SHELL", "bash")
         zombie_killer_path = Path.join(:code.priv_dir(@application), "zombie_killer")
 
