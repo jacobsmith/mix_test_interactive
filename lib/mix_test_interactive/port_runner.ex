@@ -39,10 +39,10 @@ defmodule MixTestInteractive.PortRunner do
 
       _ ->
         command = enable_ansi(command)
-        shell = System.get_env("ZOMBIE_PROCESS_KILLER_SHELL", "/usr/bin/env bash")
+        shell = System.get_env("ZOMBIE_PROCESS_KILLER_SHELL", "/usr/bin/env bash -c")
         zombie_killer_path = Path.join(:code.priv_dir(@application), "zombie_killer")
 
-        "#{shell} #{zombie_killer_path}"
+        "#{shell} '#{zombie_killer_path}'"
         |> runner.(["mix" | command],
           env: [{"MIX_ENV", "test"}],
           into: IO.stream(:stdio, :line)
